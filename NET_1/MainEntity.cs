@@ -1,18 +1,9 @@
-﻿using NET_1.Training_Data_Specs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace NET_1
+﻿namespace NET_1
 {
     public class MainEntity
     {
         private string _description;
-
+        private const int _descriptionLength = 256;
 
         public Guid Id { get; set; }
 
@@ -21,7 +12,7 @@ namespace NET_1
             get { return _description; }
             set
             {
-                if (string.IsNullOrEmpty(value) || value.Length <= 256)
+                if (string.IsNullOrEmpty(value) || value.Length <= _descriptionLength)
                 {
                     _description = value;
                 }
@@ -37,22 +28,10 @@ namespace NET_1
             return Description + Id;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj is MainEntity && obj != null)
-            {
-                MainEntity temp;
-                temp = (MainEntity)obj;
-                if (temp.Id == this.Id)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return false;
+            return obj is MainEntity temp &&
+                   Id.ToString() == temp.Id.ToString();
         }
 
         public override int GetHashCode()
