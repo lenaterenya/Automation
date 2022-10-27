@@ -18,7 +18,7 @@
                 }
                 else
                 {
-                    throw new Exception("Description is incorrect");
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }

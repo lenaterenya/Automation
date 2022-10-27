@@ -4,10 +4,13 @@
     {
         private string _text;
 
+        private const int _textLength = 10000;
+
+
         public string Text
         {
             get { return _text; }
-            set { _text = value.Length < 10000 ? value : String.Empty; }
+            set { _text = value.Length < _textLength ? value : throw new ArgumentOutOfRangeException(); }
         }
 
         public override string ToString()

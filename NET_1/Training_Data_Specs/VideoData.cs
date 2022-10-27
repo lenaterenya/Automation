@@ -10,11 +10,14 @@ namespace NET_1.Training_Data_Specs
 
         byte[] version = new byte[8];
 
+        private const int _uriLength = 0;
+
+
 
         public string Uri
         {
             get { return _videoUri; }
-            set { _videoUri = value.Length != 0 ? value : "Your Video Uri is empty"; }
+            set { _videoUri = value.Length != _uriLength ? value : throw new ArgumentOutOfRangeException(); }
         }
 
         public override string ToString()
