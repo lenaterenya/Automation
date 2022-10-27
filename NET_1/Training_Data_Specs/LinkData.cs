@@ -9,7 +9,6 @@ namespace NET_1.Training_Data_Specs
 
         private const int _uriLength = 0;
 
-
         public string Uri
         {
             get { return _contentUri; }

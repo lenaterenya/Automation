@@ -3,6 +3,7 @@
     public class MainEntity
     {
         private string _description;
+
         private const int _descriptionLength = 256;
 
         public Guid Id { get; set; }

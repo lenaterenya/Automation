@@ -12,8 +12,6 @@ namespace NET_1.Training_Data_Specs
 
         private const int _uriLength = 0;
 
-
-
         public string Uri
         {
             get { return _videoUri; }
@@ -47,7 +45,6 @@ namespace NET_1.Training_Data_Specs
                 ImageUri = this.ImageUri,
                 version = this.version,
                 VideoFormat = this.VideoFormat
-
             };
         }
     }

@@ -6,7 +6,6 @@
 
         private const int _textLength = 10000;
 
-
         public string Text
         {
             get { return _text; }
