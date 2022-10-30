@@ -7,7 +7,7 @@ namespace NET_1.Training_Data_Specs
         private string _contentUri;
         public LinkType LinkType { get; set; }
 
-        private const int _uriLength = 0;
+        private const int _uriLength = 20;
 
         public string Uri
         {

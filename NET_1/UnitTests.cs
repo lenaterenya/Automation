@@ -53,7 +53,8 @@ namespace NET_1
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void VerifyException()
         {
-            var 
+            List<TrainingMaterial> trainingMaterials = new List<TrainingMaterial>();
+            trainingMaterials.Add(new VideoData() {  LinkType = LinkType.Image, Id = Guid.NewGuid(), Uri = "http://www.sfsfsdfsgsdgsdgsdgsdgsdgsgsgsgsgsdgsdgdgsgghfgjfgfgffsdfsdfsddddddddddddddddddddd.com" });
         }
     }
 }
