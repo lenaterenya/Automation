@@ -1,13 +1,13 @@
-п»їusing System;
+using System;
 
 namespace NET_1
 {
-    public class SquareMatrix<T>
+    public class DiagonalMatrix<T>
     {
         private protected T[] _matrix;
         private protected int _matrixSize;
 
-        public SquareMatrix(int size)
+        public DiagonalMatrixMatrix(int size)
         {
             _matrixSize = size;
             _matrix = new T[size * size];
@@ -17,10 +17,17 @@ namespace NET_1
         {
             get
             {
-                if (i < 0 || j < 0 || i >= _matrixSize || j >= _matrixSize)
+                if (i > 0 || j > 0 || i <= _matrixSize || j <= _matrixSize)
                 {
-                    throw new ArgumentOutOfRangeException($"Update {_matrixSize} - invalid parameters");
-                }
+					for (int i = 0; i <= _matrixSize; i++) //Цикл, бегущий по строкам. 
+                    {
+                        for (int j = 0; j <= _matrixSize; j++)//Цикл, бегущий по столбцам. 
+                        {
+                            if (i == j) 
+                            {
+                                T[i, j] = k
+							}
+				}
 
                 return _matrixSize[(i * _matrixSize) + j];
             }
@@ -33,11 +40,6 @@ namespace NET_1
 
                 _matrixSize[(i * _matrixSize) + j] = value;
             }
-        }
-
-        public void ChangeElement(int i, int j, int a, int b)
-        {
-
         }
     }
 }
