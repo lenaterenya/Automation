@@ -54,7 +54,7 @@ namespace NET_1
         public void VerifyException()
         {
             List<TrainingMaterial> trainingMaterials = new List<TrainingMaterial>();
-            trainingMaterials.Add(new VideoData() {  LinkType = LinkType.Image, Id = Guid.NewGuid(), Uri = "http://www.sfsfsdfsgsdgsdgsdgsdgsdgsgsgsgsgsdgsdgdgsgghfgjfgfgffsdfsdfsddddddddddddddddddddd.com" });
+            trainingMaterials.Add(new LinkData() {  LinkType = LinkType.Image, Id = Guid.NewGuid(), Uri = "http://www.sfsfsdfsgsdgsdgsdgsdgsdgsgsgsgsgsdgsdgdgsgghfgjfgfgffsdfsdfsddddddddddddddddddddd.com" });
         }
     }
 }
