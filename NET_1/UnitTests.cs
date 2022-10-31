@@ -19,7 +19,7 @@ namespace NET_1
         public void VerifyLessonType()
         {
             var trainingLesson = new TrainingLesson();
-            List <TrainingMaterial> trainingMaterials = new List<TrainingMaterial>();
+            List<TrainingMaterial> trainingMaterials = new List<TrainingMaterial>();
             trainingMaterials.Add(new VideoData() { VideoFormat = VideoFormat.Avi });
             trainingMaterials.Add(new LinkData() { LinkType = LinkType.Image });
 
@@ -35,15 +35,18 @@ namespace NET_1
             trainingMaterials1.Add(new LinkData() { LinkType = LinkType.Image, Id = Guid.NewGuid() });
 
             List<TrainingMaterial> trainingMaterials2 = new List<TrainingMaterial>();
-            trainingMaterials2.Add(new TextData() { Text = MediaTypeNames.Text.Html, Id = Guid.NewGuid()});
+            trainingMaterials2.Add(new TextData() { Text = MediaTypeNames.Text.Html, Id = Guid.NewGuid() });
 
-           Assert.IsFalse(trainingMaterials1.Equals(trainingMaterials2));
+            Assert.IsFalse(trainingMaterials1.Equals(trainingMaterials2));
         }
 
         [TestMethod]
         public void CloneLinkData()
         {
-            var linkData = new LinkData() { Description = "This is Test link", Id = Guid.NewGuid(), LinkType = LinkType.Image, Uri = "www.mail.ru" };
+            var linkData = new LinkData()
+            {
+                Description = "This is Test link", Id = Guid.NewGuid(), LinkType = LinkType.Image, Uri = "www.mail.ru"
+            };
             var clonedLinkData = linkData.Clone();
 
             Assert.AreEqual(linkData, clonedLinkData);
@@ -54,7 +57,7 @@ namespace NET_1
         public void VerifyException()
         {
             List<TrainingMaterial> trainingMaterials = new List<TrainingMaterial>();
-            trainingMaterials.Add(new LinkData() {  LinkType = LinkType.Image, Id = Guid.NewGuid(), Uri = "http://www.sfsfsdfsgsdgsdgsdgsdgsdgsgsgsgsgsdgsdgdgsgghfgjfgfgffsdfsdfsddddddddddddddddddddd.com" });
+            trainingMaterials.Add(new LinkData() { LinkType = LinkType.Image, Id = Guid.NewGuid(), Uri = "" });
         }
     }
 }
