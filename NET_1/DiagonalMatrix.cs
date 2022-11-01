@@ -1,44 +1,34 @@
-using System;
-
 namespace NET_1
 {
-    public class DiagonalMatrix<T>
+    public class DiagonalMatrix<T> : SquareMatrix<T>
     {
-        private protected T[] _matrix;
-        private protected int _matrixSize;
-
-        public DiagonalMatrixMatrix(int size)
+        public DiagonalMatrix(int size) : base(size)
         {
-            _matrixSize = size;
-            _matrix = new T[size * size];
         }
 
-        public T this[int i, int j]
+        public override T this[int i, int j]
         {
             get
             {
-                if (i > 0 || j > 0 || i <= _matrixSize || j <= _matrixSize)
+                if (i < 0 || j < 0 || i >= _matrixSize || j >= _matrixSize)
                 {
-					for (int i = 0; i <= _matrixSize; i++) //Цикл, бегущий по строкам. 
-                    {
-                        for (int j = 0; j <= _matrixSize; j++)//Цикл, бегущий по столбцам. 
-                        {
-                            if (i == j) 
-                            {
-                                T[i, j] = k
-							}
-				}
+                    throw new ArgumentOutOfRangeException("Can't reach this index");
+                }
+                else if (i != j)
+                {
+                    return default;
+                }
 
-                return _matrixSize[(i * _matrixSize) + j];
+                return _matrix[i * _matrixSize + j];
             }
             set
             {
-                if (i < 0 || j < 0 || i >= _matrixSize || j >= _matrixSize)
+                if (i < 0 || j < 0 || i >= _matrixSize || j >= _matrixSize || i != j )
                 {
-                    throw new ArgumentOutOfRangeException($"Update {_matrixSize} - invalid parameters");
+                    throw new ArgumentOutOfRangeException("Update matrix Element - invalid parameters");
                 }
 
-                _matrixSize[(i * _matrixSize) + j] = value;
+                _matrix[i * _matrixSize + j] = value;
             }
         }
     }

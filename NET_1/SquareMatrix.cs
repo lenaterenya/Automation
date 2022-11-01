@@ -1,9 +1,11 @@
-﻿using System;
-
-namespace NET_1
+﻿namespace NET_1
 {
     public class SquareMatrix<T>
     {
+        public delegate bool IndexUpdateDelegate<T>(int i,int j, T oldValue);
+
+        public event IndexUpdateDelegate<T> IndexUpdate;
+
         private protected T[] _matrix;
         private protected int _matrixSize;
 
@@ -13,7 +15,7 @@ namespace NET_1
             _matrix = new T[size * size];
         }
 
-        public T this[int i, int j]
+        public virtual T this[int i, int j]
         {
             get
             {
@@ -22,7 +24,7 @@ namespace NET_1
                     throw new ArgumentOutOfRangeException($"Update {_matrixSize} - invalid parameters");
                 }
 
-                return _matrixSize[(i * _matrixSize) + j];
+                return _matrix[i * _matrixSize + j];
             }
             set
             {
@@ -31,13 +33,16 @@ namespace NET_1
                     throw new ArgumentOutOfRangeException($"Update {_matrixSize} - invalid parameters");
                 }
 
-                _matrixSize[(i * _matrixSize) + j] = value;
+                var oldValue = _matrix[i * _matrixSize + j];
+                _matrix[i * _matrixSize + j] = value;
+
+                OnMatrixChanged(i,j, oldValue);
             }
         }
 
-        public void ChangeElement(int i, int j, int a, int b)
+        public void OnMatrixChanged(int i, int j, T oldValue)
         {
-
+            IndexUpdate?.Invoke(i,j, oldValue);
         }
     }
 }
